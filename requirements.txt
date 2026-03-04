@@ -1,0 +1,7 @@
+crewai
+streamlit
+yfinance
+python-dotenv
+pandas
+requests
+duckduckgo-search
