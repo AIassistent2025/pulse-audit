@@ -1,4 +1,4 @@
-from langchain.tools import tool
+from langchain_core.tools import tool
 import yfinance as yf
 from duckduckgo_search import DDGS
 

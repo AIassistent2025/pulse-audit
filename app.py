@@ -9,7 +9,7 @@ st.set_page_config(page_title="Pulse-Audit", page_icon="📈", layout="wide")
 
 st.title("📈 Pulse-Audit")
 st.markdown("**Agentic Financial Intelligence & Compliance Auditing**")
-st.markdown("Powered by **CrewAI** & **GPT-4o**")
+st.markdown("Powered by **CrewAI** & **GPT-4o-mini**")
 
 st.sidebar.header("Configuration")
 api_key = st.sidebar.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
@@ -33,18 +33,15 @@ if st.button("Run Financial Audit"):
     else:
         with st.spinner(f"Agents are researching and analyzing {company_name} ({ticker})... This may take a few minutes."):
             try:
-                # Capture the output report
                 report = run_pulse_audit(company_name, ticker)
                 st.success("Audit Complete!")
-                
-                # Display Report
+
                 st.markdown("### 📋 Final Audit Report")
-                st.markdown(report)
-                
-                # Option to download
+                st.markdown(report.raw)
+
                 st.download_button(
                     label="Download Report as Markdown",
-                    data=str(report),
+                    data=report.raw,
                     file_name=f"{ticker}_audit_report.md",
                     mime="text/markdown"
                 )

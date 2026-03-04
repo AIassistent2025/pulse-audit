@@ -7,3 +7,4 @@ requests
 duckduckgo-search
 langchain-openai
 langchain-community
+langchain-core
